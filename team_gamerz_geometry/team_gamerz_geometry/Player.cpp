@@ -44,8 +44,17 @@ void PlayerMove(Player* player, sf::Event event,float deltatime) {
 		}
 	}*/
 	
-	
-
-	
 }
 
+Fire* CreateFire(float FireLength, float FireWidth) {
+	Fire* fire = new Fire;
+	fire->FireShape.setSize(sf::Vector2f(4, 4));
+	fire->FireShape.setFillColor(sf::Color(234, 145, 18));
+	fire->FireShape.setOutlineColor(sf::Color(245,67,5));
+	fire->FireShape.setOutlineThickness(1.0f);
+	fire->FireShape.setOrigin(FireLength, FireWidth);
+	fire->speedFire = 10.0f;
+	fire->timeToLive = 3.0f;
+
+	return fire;
+}

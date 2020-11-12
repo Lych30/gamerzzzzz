@@ -7,3 +7,8 @@ struct Player {
 	sf::CircleShape ShipShape;
 };
 
+struct Fire {
+	sf::RectangleShape FireShape;
+	float timeToLive;
+	float speedFire;
+};

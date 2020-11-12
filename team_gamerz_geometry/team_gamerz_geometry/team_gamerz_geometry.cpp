@@ -6,14 +6,17 @@
 #include "MathUtils.h"
 Player* CreatePlayer(float ShipLength, float shipWidth);
 void PlayerMove(Player* player, sf::Event event, float deltatime);
+Fire* CreateFire(float FireLength, float FireWidth);
 
 int main()
 {
 	
 	sf::Clock clock;
-	sf::RenderWindow window(sf::VideoMode(1920, 1080), "ChronoSpacer");
+	sf::RenderWindow window(sf::VideoMode(1280, 720), "Geometry Wars");
 	window.setKeyRepeatEnabled(false);
+	window.setMouseCursorVisible(false);
 	Player *player = CreatePlayer(40,40);
+	Fire* fire = CreateFire(4,4);
 	player->speed = 5.0f;
 	// Initialise everything below
 	// Game loop
@@ -46,6 +49,10 @@ int main()
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
 			dir.y += 1.0f;
 		}
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+			CreateFire(4, 4);
+			fire->FireShape.setPosition(player->ShipShape.getPosition());		
+		}
 		player->ShipShape.move(dir * 100.0f * deltaTime);
 		// Same for mouse with : sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
 
@@ -62,6 +69,7 @@ int main()
 		window.clear();
 		//window.draw(player->sprite);
 		window.draw(player->ShipShape);
+		window.draw(fire->FireShape);
 		// Whatever I want to draw goes here
 		window.display();
 	}
