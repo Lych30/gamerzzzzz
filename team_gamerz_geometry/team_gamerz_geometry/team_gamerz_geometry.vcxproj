@@ -151,10 +151,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EnzoTest.cpp" />
+    <ClCompile Include="LeoTest.cpp" />
+    <ClCompile Include="NonoTest.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="team_gamerz_geometry.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EnzoTest.h" />
+    <ClInclude Include="LeoTest.h" />
+    <ClInclude Include="NonoTest.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

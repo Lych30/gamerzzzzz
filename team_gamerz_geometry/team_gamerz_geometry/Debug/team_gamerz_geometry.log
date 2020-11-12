@@ -1,3 +1,6 @@
 ﻿  Player.cpp
-D:\C++Projet\team_gamerz_geometry\team_gamerz_geometry\Player.cpp(3,10): warning C4067: jetons inattendus après la directive du préprocesseur - saut de ligne attendu
-  team_gamerz_geometry.vcxproj -> D:\C++Projet\team_gamerz_geometry\Debug\team_gamerz_geometry.exe
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Player.cpp(3,10): warning C4067: jetons inattendus après la directive du préprocesseur - saut de ligne attendu
+  team_gamerz_geometry.cpp
+  Génération de code en cours...
+  LINK : D:\gamerzzzzz\team_gamerz_geometry\Debug\team_gamerz_geometry.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
+  team_gamerz_geometry.vcxproj -> D:\gamerzzzzz\team_gamerz_geometry\Debug\team_gamerz_geometry.exe
