@@ -4,6 +4,7 @@
 #include "Player.h"
 
 
+
 Player* CreatePlayer(float ShipLength,float shipWidth) {
 	Player* player = new Player;
 	player->ShipShape.setPointCount(3);
@@ -21,7 +22,7 @@ void PlayerMove(Player* player, sf::Event event,float deltatime) {
 	float angleRADS = (3.1415926536f / 180)* (player->ShipShape.getRotation());
 	float X = player->speed * sin(angleRADS);
 	float Y = player->speed * -cos(angleRADS);
-	if (event.type == sf::Event::KeyPressed)
+	/*if (event.type == sf::Event::KeyPressed)
 	{
 		if (event.key.code == sf::Keyboard::Up) {
 			//player->sprite.move(X, Y);
@@ -41,31 +42,10 @@ void PlayerMove(Player* player, sf::Event event,float deltatime) {
 		if (sf::Keyboard::Right) {
 			player->turnPerSecond = 0.0f;
 		}
-	}
-
+	}*/
+	
 	
 
-
-
-
-
-
-
-
-	sf::Vector2f dir;
-	
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-	{
-		dir.y -= 1.0f;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-	{
-		dir.y += 1.0f;
-	}
-
-
-
-     player->ShipShape.move(dir * deltatime);
 	
 }
 

@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <Windows.h>
 #include "Player.h"
+#include "MathUtils.h"
 Player* CreatePlayer(float ShipLength, float shipWidth);
 void PlayerMove(Player* player, sf::Event event, float deltatime);
 
@@ -32,6 +33,32 @@ int main()
 				window.close();
 			}
 		}
+		sf::Vector2f dir;
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+			dir.x -= 1.0f;
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+			dir.x += 1.0f;
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+			dir.y -= 1.0f;
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+			dir.y += 1.0f;
+		}
+		player->ShipShape.move(dir * 100.0f * deltaTime);
+		// Same for mouse with : sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
+
+		// HOW TO HANDLE MOUSE POSITION
+		sf::Vector2i mousePositionInt = sf::Mouse::getPosition(window);
+		//std::cout << mousePositionInt.x << ", " << mousePositionInt.y << std::endl;
+		sf::Vector2f mousePosition(mousePositionInt);
+
+		// HOW TO ORIENT IN A SPECIFIC DIRECTION
+		sf::Vector2f shipToAim = mousePosition - player->ShipShape.getPosition();
+		float aimingAngle = atan2f(shipToAim.y, shipToAim.x);
+		player->ShipShape.setRotation(ConvertRadToDeg(aimingAngle + IIM_PI / 2.0f));
+
 		window.clear();
 		//window.draw(player->sprite);
 		window.draw(player->ShipShape);
