@@ -38,13 +38,6 @@ int SpawnPoint(int screenWidth, int screenHeight) {
  }
 
 //fonction summon ennemy1
-EnnemyTypeOne* SummonE1() {
 
-	EnnemyTypeOne*  ennemy = new EnnemyTypeOne;
-	ennemy->ennemyShape.setPosition(1,1);
-	ennemy->ennemyShape.setScale(20,20);
-	ennemy->ennemyShape.setFillColor(sf::Color(255,0,0));
-	return ennemy;
-}
 
 //fonction summon ennemi2 qui summon des ennemy1

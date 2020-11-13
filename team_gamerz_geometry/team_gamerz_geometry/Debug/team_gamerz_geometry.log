@@ -1,4 +1,9 @@
-﻿  team_gamerz_geometry.cpp
-D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(117,46): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(123,82): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-  team_gamerz_geometry.vcxproj -> D:\gamerzzzzz\team_gamerz_geometry\Debug\team_gamerz_geometry.exe
+﻿  Ennemi_1.cpp
+D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Ennemi_1.cpp(3,10): warning C4067: jetons inattendus après la directive du préprocesseur - saut de ligne attendu
+  Player.cpp
+D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Player.cpp(3,10): warning C4067: jetons inattendus après la directive du préprocesseur - saut de ligne attendu
+  team_gamerz_geometry.cpp
+D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(118,46): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(124,82): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+  Génération de code en cours...
+  team_gamerz_geometry.vcxproj -> D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\Debug\team_gamerz_geometry.exe

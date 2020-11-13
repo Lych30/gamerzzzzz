@@ -86,6 +86,7 @@ int main()
 		{
 			player->reload -= deltaTime;
 		}
+
 		for (size_t i = 0; i < bullets.size(); i++)
 		{
 			bullets[i].bullet.move(bullets[i].currentVelocity);
@@ -100,7 +101,7 @@ int main()
 		//MA MERDE
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && nmy.spawnReload <= 0) {
 			std::cout << "A key pressed" << std::endl;
-			nmy.ennemyShape.setPosition(1, 1);
+			nmy.ennemyShape.setPosition(200, 200);
 			ennemies.push_back(EnnemyTypeOne(nmy));
 			nmy.spawnReload = 0.5f;
 		}
@@ -137,7 +138,6 @@ int main()
 		for (size_t i = 0; i < ennemies.size(); i++) {
 			window.draw(ennemies[i].ennemyShape);
 		}
-
 
 		window.display();
 	}
