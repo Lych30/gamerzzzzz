@@ -36,7 +36,6 @@ int main()
 		sf::Vector2i mousePositionInt = sf::Mouse::getPosition(window);
 		//std::cout << mousePositionInt.x << ", " << mousePositionInt.y << std::endl;
 		sf::Vector2f mousePosition(mousePositionInt);
-
 		// HOW TO ORIENT IN A SPECIFIC DIRECTION
 		sf::Vector2f shipToAim = mousePosition - player->ShipShape.getPosition();
 		float aimingAngle = atan2f(shipToAim.y, shipToAim.x);

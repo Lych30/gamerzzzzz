@@ -1,7 +1,5 @@
 ﻿  Ennemi_1.cpp
 D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Ennemi_1.cpp(3,10): warning C4067: jetons inattendus après la directive du préprocesseur - saut de ligne attendu
-  Player.cpp
-D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Player.cpp(3,10): warning C4067: jetons inattendus après la directive du préprocesseur - saut de ligne attendu
   team_gamerz_geometry.cpp
 D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(118,46): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
 D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(124,82): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
