@@ -4,13 +4,13 @@
 #include <Windows.h>
 #include "Player.h"
 #include "MathUtils.h"
-#include "Ennemi_1.h"
 #include <vector>
 Player* CreatePlayer(float ShipLength, float shipWidth);
 void PlayerMove(Player* player, sf::Event event, float deltatime);
 
 int main()
 {
+	bool IsLoaded = false;
 	int screenWidth, screenHeight;
 	screenHeight = 720;
 	screenWidth = 1280;
@@ -26,20 +26,40 @@ int main()
 	Bullet b1;
 	std::vector<Bullet> bullets;
 
-	EnnemyTypeOne nmy;
-	std::vector<EnnemyTypeOne> ennemies;
+	Star star;
+	std::vector<Star> stars;
 	// Initialise everything below
 	// Game loop
 	while (window.isOpen()) {
+	
+		for (int i = 0; i < 100 && IsLoaded == false; i++)
+		{
+			if (star.randomPlacement == 1)
+			{
+				star.star.setPosition(rand() % (screenWidth + 1), rand() % (screenHeight + 1));
+				star.star.setRadius(rand() % 5);
+				stars.push_back(Star(star));
+			}
+			if (i == 99)
+			{
+				IsLoaded = true;
+			}
+			
+		}
 
 		// HOW TO HANDLE MOUSE POSITION
 		sf::Vector2i mousePositionInt = sf::Mouse::getPosition(window);
 		//std::cout << mousePositionInt.x << ", " << mousePositionInt.y << std::endl;
 		sf::Vector2f mousePosition(mousePositionInt);
+
+
+
 		// HOW TO ORIENT IN A SPECIFIC DIRECTION
 		sf::Vector2f shipToAim = mousePosition - player->ShipShape.getPosition();
 		float aimingAngle = atan2f(shipToAim.y, shipToAim.x);
 		player->ShipShape.setRotation(ConvertRadToDeg(aimingAngle + IIM_PI / 2.0f));
+
+
 
 		float deltaTime = clock.getElapsedTime().asSeconds();
 		clock.restart();
@@ -60,7 +80,7 @@ int main()
 				window.close();
 			}
 		}
-		//DIRECTION
+
 		sf::Vector2f dir;
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 			dir.x -= 5.0f;
@@ -74,7 +94,6 @@ int main()
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
 			dir.y += 5.0f;
 		}
-		//SHOOT BULLETS
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && player->reload <=0) {
 			b1.bullet.setPosition(player->ShipShape.getPosition());
 			b1.currentVelocity = aimDirNorm * b1.maxSpeed;
@@ -85,7 +104,6 @@ int main()
 		{
 			player->reload -= deltaTime;
 		}
-
 		for (size_t i = 0; i < bullets.size(); i++)
 		{
 			bullets[i].bullet.move(bullets[i].currentVelocity);
@@ -97,16 +115,7 @@ int main()
 		}
 
 
-		//MA MERDE
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && nmy.spawnReload <= 0) {
-			std::cout << "A key pressed" << std::endl;
-			nmy.ennemyShape.setPosition(200, 200);
-			ennemies.push_back(EnnemyTypeOne(nmy));
-			nmy.spawnReload = 0.5f;
-		}
-		else {
-			nmy.spawnReload -= deltaTime;
-		}
+
 
 
 		player->ShipShape.move(dir * 100.0f * deltaTime);
@@ -127,19 +136,29 @@ int main()
 		}
 		
 		window.clear();
-		window.draw(player->ShipShape);
+		
 
 		for (size_t i = 0; i < bullets.size(); i++)
 		{
 			window.draw(bullets[i].bullet);
 		}
-
-		for (size_t i = 0; i < ennemies.size(); i++) {
-			window.draw(ennemies[i].ennemyShape);
+		for (size_t i = 0; i < stars.size(); i++)
+		{
+			window.draw(stars[i].star);
 		}
-
+		window.draw(player->ShipShape);
 		window.display();
 	}
 
    
 }
+// Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
+// Déboguer le programme : F5 ou menu Déboguer > Démarrer le débogage
+
+// Astuces pour bien démarrer : 
+//   1. Utilisez la fenêtre Explorateur de solutions pour ajouter des fichiers et les gérer.
+//   2. Utilisez la fenêtre Team Explorer pour vous connecter au contrôle de code source.
+//   3. Utilisez la fenêtre Sortie pour voir la sortie de la génération et d'autres messages.
+//   4. Utilisez la fenêtre Liste d'erreurs pour voir les erreurs.
+//   5. Accédez à Projet > Ajouter un nouvel élément pour créer des fichiers de code, ou à Projet > Ajouter un élément existant pour ajouter des fichiers de code existants au projet.
+//   6. Pour rouvrir ce projet plus tard, accédez à Fichier > Ouvrir > Projet et sélectionnez le fichier .sln.

@@ -22,4 +22,12 @@ public:
 
 	}
 };
+class Star {
+public :
+	sf::CircleShape star;
+	int randomPlacement = rand() % 10;
+	Star() {
+		this->star.setPointCount(4);
+	}
 
+};
