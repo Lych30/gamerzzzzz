@@ -1,11 +1,8 @@
-﻿  MathsUtils.cpp
-  Player.cpp
-D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Player.cpp(3,10): warning C4067: jetons inattendus après la directive du préprocesseur - saut de ligne attendu
-  team_gamerz_geometry.cpp
-D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(39,62): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(39,34): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(40,32): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(126,46): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(132,82): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-  Génération de code en cours...
-  team_gamerz_geometry.vcxproj -> D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\Debug\team_gamerz_geometry.exe
+﻿  team_gamerz_geometry.cpp
+C:\Users\user\3D Objects\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(64,62): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\user\3D Objects\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(64,34): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\user\3D Objects\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(65,32): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\user\3D Objects\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(151,46): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\user\3D Objects\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(157,82): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\user\3D Objects\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(191,42): warning C4129: 'A' : caractère de séquence d'échappement non reconnu
+  team_gamerz_geometry.vcxproj -> C:\Users\user\3D Objects\gamerzzzzz\team_gamerz_geometry\Debug\team_gamerz_geometry.exe

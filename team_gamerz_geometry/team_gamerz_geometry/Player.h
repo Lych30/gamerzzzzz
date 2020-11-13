@@ -29,5 +29,4 @@ public :
 	Star() {
 		this->star.setPointCount(4);
 	}
-
 };

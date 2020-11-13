@@ -1,22 +1,47 @@
-
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <Windows.h>
 #include "Player.h"
 #include "MathUtils.h"
 #include <vector>
+std::string getAppPath();
+std::string getAssetsPath();
+
 Player* CreatePlayer(float ShipLength, float shipWidth);
 void PlayerMove(Player* player, sf::Event event, float deltatime);
 
 int main()
 {
+	std::cout << getAssetsPath() << std::endl;
+	sf::Font arcade;
+	sf::Text textScore;
+
+	sf::Text score;
+
+	int comptScore = 50000;
+
+	//Setup de la Font
+	arcade.loadFromFile(getAssetsPath() + "\\arcade1.ttf");
+
+	//écriture de "score:"
+	textScore.setFont(arcade);
+	textScore.setString("score:");
+	textScore.setFillColor(sf::Color(255, 143, 0));
+	textScore.setPosition(5, 5);
+
+	//écriture de la variable score en string
+	score.setFont(arcade);
+	score.setFillColor(sf::Color(239, 159, 58));
+	score.setString(std::to_string(comptScore));
+	score.setPosition(175, 5);
+
 	bool IsLoaded = false;
 	int screenWidth, screenHeight;
 	screenHeight = 720;
 	screenWidth = 1280;
 	sf::Clock clock;
 	sf::RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "GeometryWar");
-	//window.setMouseCursorVisible(false);
+	window.setMouseCursorVisible(false);
 	window.setKeyRepeatEnabled(false);
 	Player *player = CreatePlayer(40,40);
 	player->speed = 100.0f;
@@ -147,10 +172,24 @@ int main()
 			window.draw(stars[i].star);
 		}
 		window.draw(player->ShipShape);
+		window.draw(textScore);
+		window.draw(score);
 		window.display();
 	}
+}
 
-   
+std::string getAppPath() {
+	char cExeFilePath[256];
+	GetModuleFileNameA(NULL, cExeFilePath, 256);
+	std::string exeFilePath = cExeFilePath;
+	int exeNamePos = exeFilePath.find_last_of("\\/");
+	std::string appPath = exeFilePath.substr(0, exeNamePos + 1);
+	return appPath;
+}
+
+std::string getAssetsPath() {
+	std::string assetsPath = getAppPath() + "\Assets";
+	return assetsPath;
 }
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
 // Déboguer le programme : F5 ou menu Déboguer > Démarrer le débogage
