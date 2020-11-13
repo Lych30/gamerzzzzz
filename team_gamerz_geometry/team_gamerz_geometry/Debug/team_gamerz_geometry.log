@@ -1,4 +1,4 @@
 ﻿  team_gamerz_geometry.cpp
-D:\C++Projet\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(108,46): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-D:\C++Projet\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(114,82): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-  team_gamerz_geometry.vcxproj -> D:\C++Projet\team_gamerz_geometry\Debug\team_gamerz_geometry.exe
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(117,46): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(123,82): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+  team_gamerz_geometry.vcxproj -> D:\gamerzzzzz\team_gamerz_geometry\Debug\team_gamerz_geometry.exe

@@ -153,9 +153,11 @@
   <ItemGroup>
     <ClCompile Include="MathsUtils.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Ennemi_1.cpp" />
     <ClCompile Include="team_gamerz_geometry.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ennemi_1.h" />
     <ClInclude Include="MathUtils.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
