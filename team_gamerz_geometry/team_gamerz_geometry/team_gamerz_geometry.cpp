@@ -4,23 +4,44 @@
 #include <Windows.h>
 #include "Player.h"
 #include "MathUtils.h"
+#include <vector>
 Player* CreatePlayer(float ShipLength, float shipWidth);
 void PlayerMove(Player* player, sf::Event event, float deltatime);
-Fire* CreateFire(float FireLength, float FireWidth);
 
 int main()
 {
-	
+	int screenWidth, screenHeight;
+	screenHeight = 720;
+	screenWidth = 1280;
 	sf::Clock clock;
-	sf::RenderWindow window(sf::VideoMode(1280, 720), "Geometry Wars");
+	sf::RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "GeometryWar");
+	//window.setMouseCursorVisible(false);
 	window.setKeyRepeatEnabled(false);
-	window.setMouseCursorVisible(false);
 	Player *player = CreatePlayer(40,40);
-	Fire* fire = CreateFire(4,4);
-	player->speed = 5.0f;
+	player->speed = 100.0f;
+
+	sf::Vector2f aimDir;
+	sf::Vector2f aimDirNorm;
+	Bullet b1;
+	std::vector<Bullet> bullets;
 	// Initialise everything below
 	// Game loop
 	while (window.isOpen()) {
+	
+
+		// HOW TO HANDLE MOUSE POSITION
+		sf::Vector2i mousePositionInt = sf::Mouse::getPosition(window);
+		//std::cout << mousePositionInt.x << ", " << mousePositionInt.y << std::endl;
+		sf::Vector2f mousePosition(mousePositionInt);
+
+
+
+		// HOW TO ORIENT IN A SPECIFIC DIRECTION
+		sf::Vector2f shipToAim = mousePosition - player->ShipShape.getPosition();
+		float aimingAngle = atan2f(shipToAim.y, shipToAim.x);
+		player->ShipShape.setRotation(ConvertRadToDeg(aimingAngle + IIM_PI / 2.0f));
+
+
 
 		float deltaTime = clock.getElapsedTime().asSeconds();
 		clock.restart();
@@ -29,48 +50,81 @@ int main()
 		player->ShipShape.rotate(deltaAngle);
 		sf::Event event;
 		while (window.pollEvent(event)) {
+
+			//PLAYER
 			PlayerMove(player,event,deltaTime);
-		
+
+
+			aimDir = mousePosition - player->ShipShape.getPosition();
+			aimDirNorm = aimDir / sqrt(pow(aimDir.x, 2) + pow(aimDir.y, 2));
 			// Process any input event here
 			if (event.type == sf::Event::Closed) {
 				window.close();
 			}
 		}
+
 		sf::Vector2f dir;
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-			dir.x -= 1.0f;
+			dir.x -= 5.0f;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-			dir.x += 1.0f;
+			dir.x += 5.0f;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-			dir.y -= 1.0f;
+			dir.y -= 5.0f;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-			dir.y += 1.0f;
+			dir.y += 5.0f;
 		}
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
-			CreateFire(4, 4);
-			fire->FireShape.setPosition(player->ShipShape.getPosition());		
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && player->reload <=0) {
+			b1.bullet.setPosition(player->ShipShape.getPosition());
+			b1.currentVelocity = aimDirNorm * b1.maxSpeed;
+			bullets.push_back(Bullet(b1));
+			player->reload = 0.5f;
 		}
+		else
+		{
+			player->reload -= deltaTime;
+		}
+		for (size_t i = 0; i < bullets.size(); i++)
+		{
+			bullets[i].bullet.move(bullets[i].currentVelocity);
+			if (bullets[i].bullet.getPosition().x<0 || bullets[i].bullet.getPosition().x > window.getSize().x
+				|| bullets[i].bullet.getPosition().y<0 || bullets[i].bullet.getPosition().y > window.getSize().y)
+			{
+				bullets.erase(bullets.begin() + i);
+			}
+		}
+
+
+
+
+
 		player->ShipShape.move(dir * 100.0f * deltaTime);
-		// Same for mouse with : sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
 
-		// HOW TO HANDLE MOUSE POSITION
-		sf::Vector2i mousePositionInt = sf::Mouse::getPosition(window);
-		//std::cout << mousePositionInt.x << ", " << mousePositionInt.y << std::endl;
-		sf::Vector2f mousePosition(mousePositionInt);
 
-		// HOW TO ORIENT IN A SPECIFIC DIRECTION
-		sf::Vector2f shipToAim = mousePosition - player->ShipShape.getPosition();
-		float aimingAngle = atan2f(shipToAim.y, shipToAim.x);
-		player->ShipShape.setRotation(ConvertRadToDeg(aimingAngle + IIM_PI / 2.0f));
-
+		//TP
+		if (player->ShipShape.getPosition().x < -30) {
+			player->ShipShape.setPosition(screenWidth + 30, player->ShipShape.getPosition().y);
+		}
+		if (player->ShipShape.getPosition().x > screenWidth + 30) {
+			player->ShipShape.setPosition(-29, player->ShipShape.getPosition().y);
+		}
+		if (player->ShipShape.getPosition().y < -30) {
+			player->ShipShape.setPosition(player->ShipShape.getPosition().x, screenHeight + 30);
+		}
+		if (player->ShipShape.getPosition().y > screenHeight + 30) {
+			player->ShipShape.setPosition(player->ShipShape.getPosition().x, -29);
+		}
+		
 		window.clear();
-		//window.draw(player->sprite);
 		window.draw(player->ShipShape);
-		window.draw(fire->FireShape);
-		// Whatever I want to draw goes here
+
+		for (size_t i = 0; i < bullets.size(); i++)
+		{
+			window.draw(bullets[i].bullet);
+		}
+
 		window.display();
 	}
 
