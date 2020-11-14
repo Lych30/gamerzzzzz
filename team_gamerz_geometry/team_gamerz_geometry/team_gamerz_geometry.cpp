@@ -41,7 +41,7 @@ int main()
 	screenWidth = 1280;
 	sf::Clock clock;
 	sf::RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "GeometryWar");
-	window.setMouseCursorVisible(false);
+	//window.setMouseCursorVisible(false);
 	window.setKeyRepeatEnabled(false);
 	Player *player = CreatePlayer(40,40);
 	player->speed = 100.0f;
@@ -82,7 +82,12 @@ int main()
 		// HOW TO ORIENT IN A SPECIFIC DIRECTION
 		sf::Vector2f shipToAim = mousePosition - player->ShipShape.getPosition();
 		float aimingAngle = atan2f(shipToAim.y, shipToAim.x);
-		player->ShipShape.setRotation(ConvertRadToDeg(aimingAngle + IIM_PI / 2.0f));
+
+		if (player->IsDashing== false)
+		{
+			player->ShipShape.setRotation(ConvertRadToDeg(aimingAngle + IIM_PI / 2.0f));
+		}
+		
 
 
 
@@ -90,45 +95,124 @@ int main()
 		clock.restart();
 		float deltaAngle = deltaTime * 3.14159265358979323846f * 2.0f * player->turnPerSecond;
 		//player->sprite.rotate(deltaAngle);
-		player->ShipShape.rotate(deltaAngle);
+		if (player->IsDashing == false) {
+			player->ShipShape.rotate(deltaAngle);
+		}
+		
 		sf::Event event;
 		while (window.pollEvent(event)) {
 
 			//PLAYER
-			PlayerMove(player,event,deltaTime);
+			PlayerMove(player, event, deltaTime);
 
 
-			aimDir = mousePosition - player->ShipShape.getPosition();
-			aimDirNorm = aimDir / sqrt(pow(aimDir.x, 2) + pow(aimDir.y, 2));
+				aimDir = mousePosition - player->ShipShape.getPosition();
+				aimDirNorm = aimDir / sqrt(pow(aimDir.x, 2) + pow(aimDir.y, 2));
+			
+
+
 			// Process any input event here
 			if (event.type == sf::Event::Closed) {
 				window.close();
 			}
 		}
-
+		// Direction
 		sf::Vector2f dir;
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-			dir.x -= 5.0f;
+		if (player->IsDashing == false)
+		{
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+				dir.x -= 5.0f;
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+				dir.x += 5.0f;
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+				dir.y -= 5.0f;
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+				dir.y += 5.0f;
+			}
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-			dir.x += 5.0f;
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-			dir.y -= 5.0f;
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-			dir.y += 5.0f;
-		}
+
+		//TIR
+		//1
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && player->reload <=0) {
 			b1.bullet.setPosition(player->ShipShape.getPosition());
 			b1.currentVelocity = aimDirNorm * b1.maxSpeed;
 			bullets.push_back(Bullet(b1));
+			player->reload = 0.5f;
+			std::cout << aimDirNorm.x << " ; " << aimDirNorm.y << std::endl;
+		}
+		else
+		{
+			player->reload -= deltaTime;
+		}
+		//2
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right) && player->reload <= 0) {
+
+		
+
+			aimDir = (mousePosition - player->ShipShape.getPosition());
+			aimDirNorm = (aimDir / sqrt(pow(aimDir.x, 2) + pow(aimDir.y, 2))) + sf::Vector2f(0.2f,0.2f);
+			b1.bullet.setPosition(player->ShipShape.getPosition());
+			b1.currentVelocity = aimDirNorm * (b1.maxSpeed +.5f);
+			bullets.push_back(Bullet(b1));
+
+			aimDir = (mousePosition - player->ShipShape.getPosition());
+			aimDirNorm = (aimDir / sqrt(pow(aimDir.x, 2) + pow(aimDir.y, 2))) - sf::Vector2f(0.2f, 0.2f);
+			b1.bullet.setPosition(player->ShipShape.getPosition());
+			b1.currentVelocity = aimDirNorm *(b1.maxSpeed +.5f);
+			bullets.push_back(Bullet(b1));
+
+			aimDir = mousePosition - player->ShipShape.getPosition();
+			aimDirNorm = aimDir / sqrt(pow(aimDir.x, 2) + pow(aimDir.y, 2));
+			b1.bullet.setPosition(player->ShipShape.getPosition());
+			b1.currentVelocity = aimDirNorm * (b1.maxSpeed +.5f);
+			bullets.push_back(Bullet(b1));
+
 			player->reload = 0.5f;
 		}
 		else
 		{
 			player->reload -= deltaTime;
 		}
+
+
+		//Dash
+		if (player->DashReloadTime > 0)
+		{
+			player->DashReloadTime -= deltaTime;
+		}
+		else
+		{
+			player->DashReady = true;
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::RControl) && player->DashReady == true) {
+			player->IsDashing = true;
+		}
+		 if(player->IsDashing == true)
+		{
+			if(player->DashTime > 0)
+			{
+				player->ShipShape.move(aimDirNorm*3.f);
+				player->DashTime -= deltaTime;
+			}
+			else
+			{
+				player->DashTime = 0.05f;
+				player->DashReloadTime = 2.0f;
+				player->IsDashing = false;
+				player->DashReady = false;
+
+			}
+			
+		}
+		 //Fin du DASH
+
+
+
 		for (size_t i = 0; i < bullets.size(); i++)
 		{
 			bullets[i].bullet.move(bullets[i].currentVelocity);
@@ -138,12 +222,11 @@ int main()
 				bullets.erase(bullets.begin() + i);
 			}
 		}
-
-
-
-
-
-		player->ShipShape.move(dir * 100.0f * deltaTime);
+		if (player->IsDashing == false)
+		{
+			player->ShipShape.move(dir * 100.0f * deltaTime);
+		}
+		
 
 
 		//TP

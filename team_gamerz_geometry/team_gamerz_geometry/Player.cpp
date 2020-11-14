@@ -23,30 +23,6 @@ void PlayerMove(Player* player, sf::Event event,float deltatime) {
 	float angleRADS = (3.1415926536f / 180)* (player->ShipShape.getRotation());
 	float X = player->speed * sin(angleRADS);
 	float Y = player->speed * -cos(angleRADS);
-	/*if (event.type == sf::Event::KeyPressed)
-	{
-		if (event.key.code == sf::Keyboard::Up) {
-			//player->sprite.move(X, Y);
-			player->ShipShape.move(X, Y);
-		}
-		if (event.key.code == sf::Keyboard::Left) {
-			player->turnPerSecond = -16.0f;
-		}
-		if (event.key.code == sf::Keyboard::Right) {
-			player->turnPerSecond = 16.0f;
-		}
-	}
-	if (event.type == sf::Event::KeyReleased) {
-		if (sf::Keyboard::Left) {
-			player->turnPerSecond = 0.0f;
-		}
-		if (sf::Keyboard::Right) {
-			player->turnPerSecond = 0.0f;
-		}
-	}*/
-	
-	
-
 	
 }
 

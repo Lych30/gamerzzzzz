@@ -6,6 +6,11 @@ struct Player {
 	float turnPerSecond =0.0f;
 	sf::CircleShape ShipShape;
 	float reload = 0.25f;
+	bool IsDashing = false;
+	float DashTime = 0.05f;
+	float DashReloadTime = 2.f;
+	bool DashReady = false;
+
 };
 class Bullet {
 public:
