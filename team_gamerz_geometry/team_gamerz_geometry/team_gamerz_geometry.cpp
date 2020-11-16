@@ -5,6 +5,9 @@
 #include "Player.h"
 #include "MathUtils.h"
 #include <vector>
+#include "Star.h"
+
+
 std::string getAppPath();
 std::string getAssetsPath();
 std::string getSoundsPath();
@@ -14,11 +17,14 @@ void PlayerMove(Player* player, sf::Event event, float deltatime);
 
 int main()
 {
+	std::vector<Star> stars;
+
 	std::cout << getAssetsPath() << std::endl;
 	std::cout << getSoundsPath() << std::endl;
 	sf::Font arcade;
 	sf::Text textScore;
 	sf::Text score;
+
 
 	//Set de la musique de fond.
 	sf::Music music;
@@ -69,9 +75,9 @@ int main()
 	screenHeight = 720;
 	screenWidth = 1280;
 	sf::Clock clock;
-	sf::RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "GeometryWar");
+	sf::RenderWindow *window =  new sf::RenderWindow(sf::VideoMode(screenWidth, screenHeight), "GeometryWar");
 	//window.setMouseCursorVisible(false);
-	window.setKeyRepeatEnabled(false);
+	window->setKeyRepeatEnabled(false);
 	Player *player = CreatePlayer(40,40);
 	player->speed = 100.0f;
 
@@ -80,29 +86,17 @@ int main()
 	Bullet b1;
 	std::vector<Bullet> bullets;
 
-	Star star;
-	std::vector<Star> stars;
 	// Initialise everything below
 	// Game loop
-	while (window.isOpen()) {
+
+	stars = CreateStar(screenWidth, screenHeight,window,stars);
+
+	while (window->isOpen()) {
 	
-		for (int i = 0; i < 100 && IsLoaded == false; i++)
-		{
-			if (star.randomPlacement == 1)
-			{
-				star.star.setPosition(rand() % (screenWidth + 1), rand() % (screenHeight + 1));
-				star.star.setRadius(rand() % 5);
-				stars.push_back(Star(star));
-			}
-			if (i == 99)
-			{
-				IsLoaded = true;
-			}
-			
-		}
+		
 
 		// HOW TO HANDLE MOUSE POSITION
-		sf::Vector2i mousePositionInt = sf::Mouse::getPosition(window);
+		sf::Vector2i mousePositionInt = sf::Mouse::getPosition(*window);
 		//std::cout << mousePositionInt.x << ", " << mousePositionInt.y << std::endl;
 		sf::Vector2f mousePosition(mousePositionInt);
 
@@ -129,7 +123,7 @@ int main()
 		}
 		
 		sf::Event event;
-		while (window.pollEvent(event)) {
+		while (window->pollEvent(event)) {
 
 			//PLAYER
 			PlayerMove(player, event, deltaTime);
@@ -142,7 +136,7 @@ int main()
 
 			// Process any input event here
 			if (event.type == sf::Event::Closed) {
-				window.close();
+				window->close();
 			}
 		}
 		// Direction
@@ -247,8 +241,8 @@ int main()
 		for (size_t i = 0; i < bullets.size(); i++)
 		{
 			bullets[i].bullet.move(bullets[i].currentVelocity);
-			if (bullets[i].bullet.getPosition().x<0 || bullets[i].bullet.getPosition().x > window.getSize().x
-				|| bullets[i].bullet.getPosition().y<0 || bullets[i].bullet.getPosition().y > window.getSize().y)
+			if (bullets[i].bullet.getPosition().x<0 || bullets[i].bullet.getPosition().x > window->getSize().x
+				|| bullets[i].bullet.getPosition().y<0 || bullets[i].bullet.getPosition().y > window->getSize().y)
 			{
 				bullets.erase(bullets.begin() + i);
 			}
@@ -274,21 +268,20 @@ int main()
 			player->ShipShape.setPosition(player->ShipShape.getPosition().x, -29);
 		}
 		
-		window.clear();
-		
+		window->clear();
 
 		for (size_t i = 0; i < bullets.size(); i++)
 		{
-			window.draw(bullets[i].bullet);
+			window->draw(bullets[i].bullet);
 		}
 		for (size_t i = 0; i < stars.size(); i++)
 		{
-			window.draw(stars[i].star);
+			window->draw(stars[i].star);
 		}
-		window.draw(player->ShipShape);
-		window.draw(textScore);
-		window.draw(score);
-		window.display();
+		window->draw(player->ShipShape);
+		window->draw(textScore);
+		window->draw(score);
+		window->display();
 	}
 }
 
