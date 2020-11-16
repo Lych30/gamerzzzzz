@@ -1,11 +1,13 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <Windows.h>
 #include "Player.h"
 #include "MathUtils.h"
 #include <vector>
 std::string getAppPath();
 std::string getAssetsPath();
+std::string getSoundsPath();
 
 Player* CreatePlayer(float ShipLength, float shipWidth);
 void PlayerMove(Player* player, sf::Event event, float deltatime);
@@ -13,10 +15,37 @@ void PlayerMove(Player* player, sf::Event event, float deltatime);
 int main()
 {
 	std::cout << getAssetsPath() << std::endl;
+	std::cout << getSoundsPath() << std::endl;
 	sf::Font arcade;
 	sf::Text textScore;
-
 	sf::Text score;
+
+	//Set de la musique de fond.
+	sf::Music music;
+	if (!music.openFromFile(getSoundsPath() + "\\backgroundMusic.ogg")) {
+		return -1; // erreur
+	}
+	music.setVolume(5);
+	music.setLoop(true);
+	music.play();
+
+	//Set du son du tir1
+	sf::Sound tir1;
+	sf::SoundBuffer bufferTir1;
+	tir1.setBuffer(bufferTir1);
+	if (!bufferTir1.loadFromFile(getSoundsPath() + "\\tir1.ogg")) {
+		return -1;
+	}
+	tir1.setVolume(40);
+
+	//Set du son du tir2 (tir spéciale)
+	sf::Sound tir2;
+	sf::SoundBuffer bufferTir2;
+	tir2.setBuffer(bufferTir2);
+	if (!bufferTir2.loadFromFile(getSoundsPath() + "\\tir2.ogg")) {
+		return -1;
+	}
+	tir2.setVolume(40);
 
 	int comptScore = 50000;
 
@@ -143,6 +172,7 @@ int main()
 			bullets.push_back(Bullet(b1));
 			player->reload = 0.5f;
 			std::cout << aimDirNorm.x << " ; " << aimDirNorm.y << std::endl;
+			tir1.play();
 		}
 		else
 		{
@@ -170,6 +200,7 @@ int main()
 			b1.bullet.setPosition(player->ShipShape.getPosition());
 			b1.currentVelocity = aimDirNorm * (b1.maxSpeed +.5f);
 			bullets.push_back(Bullet(b1));
+			tir2.play();
 
 			player->reload = 0.5f;
 		}
@@ -273,6 +304,11 @@ std::string getAppPath() {
 std::string getAssetsPath() {
 	std::string assetsPath = getAppPath() + "\Assets";
 	return assetsPath;
+}
+
+std::string getSoundsPath() {
+	std::string soundsPath = getAppPath() + "\Sounds";
+	return soundsPath;
 }
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
 // Déboguer le programme : F5 ou menu Déboguer > Démarrer le débogage
