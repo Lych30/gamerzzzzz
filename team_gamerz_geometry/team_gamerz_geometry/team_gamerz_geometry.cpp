@@ -7,6 +7,7 @@
 #include <vector>
 #include "Star.h"
 #include "SetEnnemiesPosition.h"
+#include "Menu.h"
 
 
 std::string getAppPath();
@@ -87,12 +88,13 @@ int main()
 	sf::Vector2f aimDirNorm;
 	Bullet b1;
 	std::vector<Bullet> bullets;
-
+	std::vector<Button>buttons;
 	// Initialise everything below
 	// Game loop
 
 	stars = CreateStar(screenWidth, screenHeight,window,stars);
-
+	buttons = InitialiseButton(window, 0, 0, buttons, "PLAY");
+	buttons = InitialiseButton(window, 0, 300, buttons, "QUITTER");
 	while (window->isOpen()) {
 	
 		/*TEST ENNEMY POS
@@ -283,6 +285,38 @@ int main()
 		{
 			window->draw(stars[i].star);
 		}
+
+		for (size_t i = 0; i < buttons.size(); i++)
+		{
+			window->draw(buttons[i].ButtonShape);
+			buttons[i].text.setFont(arcade);
+			buttons[i].text.setFillColor(sf::Color(255, 143, 0));
+			if (buttons[i].ButtonShape.getGlobalBounds().contains(mousePosition)) {
+				buttons[i].ButtonShape.setFillColor(sf::Color(0, 255, 0, 0));
+				buttons[i].text.setFillColor(sf::Color(255, 255, 255, 255));
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && buttons[i].text.getString() == "QUITTER")
+				{
+					window->close();
+				}
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && buttons[i].text.getString() == "PLAY")
+				{
+					while (buttons.size() > 0)
+					{
+						buttons.erase(buttons.begin());
+					}
+				}
+			}
+			else
+			{
+				buttons[i].ButtonShape.setFillColor(sf::Color(255, 255, 255, 0));
+			}
+			if (buttons.size() > 0)
+			{
+				window->draw(buttons[i].text);
+			}
+
+		}
+
 		window->draw(player->ShipShape);
 		window->draw(textScore);
 		window->draw(score);
