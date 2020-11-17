@@ -6,6 +6,7 @@
 #include "MathUtils.h"
 #include <vector>
 #include "Star.h"
+#include "SetEnnemiesPosition.h"
 
 
 std::string getAppPath();
@@ -17,6 +18,7 @@ void PlayerMove(Player* player, sf::Event event, float deltatime);
 
 int main()
 {
+	
 	std::vector<Star> stars;
 
 	std::cout << getAssetsPath() << std::endl;
@@ -93,7 +95,10 @@ int main()
 
 	while (window->isOpen()) {
 	
-		
+		/*TEST ENNEMY POS
+		for (int i = 0; i < 100; i++) {
+			sf::Vector2f test = SetPos(screenWidth, screenHeight, 30);
+		}*/
 
 		// HOW TO HANDLE MOUSE POSITION
 		sf::Vector2i mousePositionInt = sf::Mouse::getPosition(*window);

@@ -1,9 +1,24 @@
-﻿  team_gamerz_geometry.cpp
-D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Star.h(9,55): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Star.h(9,33): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Star.h(10,31): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(259,46): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(265,82): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(298,42): warning C4129: 'A' : caractère de séquence d'échappement non reconnu
-D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(303,42): warning C4129: 'S' : caractère de séquence d'échappement non reconnu
-D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Star.h(14): error C4716: 'CreateStar' : doit retourner une valeur
+﻿  MathsUtils.cpp
+  Player.cpp
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Player.cpp(3,10): warning C4067: jetons inattendus après la directive du préprocesseur - saut de ligne attendu
+  SetEnnemiesPosition.cpp
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\SetEnnemiesPosition.cpp(3,10): warning C4067: jetons inattendus après la directive du préprocesseur - saut de ligne attendu
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\SetEnnemiesPosition.cpp(11,16): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\SetEnnemiesPosition.cpp(12,55): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\SetEnnemiesPosition.cpp(15,54): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\SetEnnemiesPosition.cpp(16,16): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\SetEnnemiesPosition.cpp(19,16): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\SetEnnemiesPosition.cpp(20,55): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\SetEnnemiesPosition.cpp(23,54): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\SetEnnemiesPosition.cpp(24,16): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+  team_gamerz_geometry.cpp
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Star.h(9,55): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Star.h(9,33): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Star.h(10,31): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(263,46): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(269,82): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(302,42): warning C4129: 'A' : caractère de séquence d'échappement non reconnu
+D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(307,42): warning C4129: 'S' : caractère de séquence d'échappement non reconnu
+  Génération de code en cours...
+  LINK : D:\gamerzzzzz\team_gamerz_geometry\Debug\team_gamerz_geometry.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
+  team_gamerz_geometry.vcxproj -> D:\gamerzzzzz\team_gamerz_geometry\Debug\team_gamerz_geometry.exe
