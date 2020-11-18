@@ -1,13 +1,21 @@
-﻿  Ennemies.cpp
-D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Player.h(3,15): warning C4099: 'Player' : nom de type déjà rencontré avec 'class' et utilisant maintenant 'struct'
-D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Player.h(3): message : voir la déclaration de 'Player'
-D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Ennemies.cpp(5,10): warning C4067: jetons inattendus après la directive du préprocesseur - saut de ligne attendu
-D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Ennemies.cpp(13,16): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Ennemies.cpp(14,55): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Ennemies.cpp(17,54): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Ennemies.cpp(18,16): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Ennemies.cpp(21,16): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Ennemies.cpp(22,55): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Ennemies.cpp(25,54): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-D:\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Ennemies.cpp(26,16): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-  team_gamerz_geometry.vcxproj -> D:\gamerzzzzz\team_gamerz_geometry\Debug\team_gamerz_geometry.exe
+﻿  team_gamerz_geometry.cpp
+D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Star.h(10,55): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Star.h(10,33): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Star.h(11,31): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Ennemies.h(3,13): warning C4099: 'Player' : nom de type déjà rencontré avec 'struct' et utilisant maintenant 'class'
+D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Player.h(3): message : voir la déclaration de 'Player'
+D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Menu.h(14,96): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Menu.h(14,59): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(264,46): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(270,82): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(363,42): warning C4129: 'A' : caractère de séquence d'échappement non reconnu
+D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(368,42): warning C4129: 'S' : caractère de séquence d'échappement non reconnu
+  team_gamerz_geometry.vcxproj -> D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\Debug\team_gamerz_geometry.exe

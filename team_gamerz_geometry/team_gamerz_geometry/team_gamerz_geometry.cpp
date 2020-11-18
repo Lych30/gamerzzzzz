@@ -292,6 +292,14 @@ int main()
 		for (size_t i = 0; i < ennemy.size(); i++)
 		{
 			window->draw(ennemy[i].shape);
+			for (size_t j = 0; j < bullets.size(); j++)
+			{
+				
+				if (ennemy[i].shape.getGlobalBounds().contains(bullets[j].bullet.getPosition()))
+				{
+						ennemy.erase(ennemy.begin()+i);
+				}
+			}
 		}
 
 		for (size_t i = 0; i < bullets.size(); i++)
