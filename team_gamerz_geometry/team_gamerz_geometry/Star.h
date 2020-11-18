@@ -1,4 +1,5 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 std::vector<Star>CreateStar(int Width,int Height,sf::RenderWindow *window,std::vector<Star>stars)
 {
 	Star star;

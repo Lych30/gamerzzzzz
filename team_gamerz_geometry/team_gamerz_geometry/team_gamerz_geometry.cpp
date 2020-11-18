@@ -6,7 +6,7 @@
 #include "MathUtils.h"
 #include <vector>
 #include "Star.h"
-#include "SetEnnemiesPosition.h"
+#include "Ennemies.h"
 #include "Menu.h"
 
 
@@ -28,6 +28,7 @@ int main()
 	sf::Text textScore;
 	sf::Text score;
 
+	bool gameHasStarted = false;
 
 	//Set de la musique de fond.
 	sf::Music music;
@@ -74,7 +75,7 @@ int main()
 	score.setPosition(175, 5);
 
 	bool IsLoaded = false;
-	int screenWidth, screenHeight;
+	static int screenWidth, screenHeight;
 	screenHeight = 720;
 	screenWidth = 1280;
 	sf::Clock clock;
@@ -88,6 +89,10 @@ int main()
 	sf::Vector2f aimDirNorm;
 	Bullet b1;
 	std::vector<Bullet> bullets;
+
+	std::vector<Ennemy> ennemy;
+	float spawnDelay = 1;
+
 	std::vector<Button>buttons;
 	// Initialise everything below
 	// Game loop
@@ -96,11 +101,6 @@ int main()
 	buttons = InitialiseButton(window, 0, 0, buttons, "PLAY");
 	buttons = InitialiseButton(window, 0, 300, buttons, "QUITTER");
 	while (window->isOpen()) {
-	
-		/*TEST ENNEMY POS
-		for (int i = 0; i < 100; i++) {
-			sf::Vector2f test = SetPos(screenWidth, screenHeight, 30);
-		}*/
 
 		// HOW TO HANDLE MOUSE POSITION
 		sf::Vector2i mousePositionInt = sf::Mouse::getPosition(*window);
@@ -118,8 +118,6 @@ int main()
 			player->ShipShape.setRotation(ConvertRadToDeg(aimingAngle + IIM_PI / 2.0f));
 		}
 		
-
-
 
 		float deltaTime = clock.getElapsedTime().asSeconds();
 		clock.restart();
@@ -274,8 +272,27 @@ int main()
 		if (player->ShipShape.getPosition().y > screenHeight + 30) {
 			player->ShipShape.setPosition(player->ShipShape.getPosition().x, -29);
 		}
+
+		//SPAWN ENNEMIES
+
+		if (spawnDelay <= 0 && gameHasStarted) {
+			ennemy.push_back({ player, window ,30});
+			spawnDelay = 1.0f;
+		}
+		else
+		{
+			spawnDelay -= deltaTime;
+		}
+		
+
 		
 		window->clear();
+
+
+		for (size_t i = 0; i < ennemy.size(); i++)
+		{
+			window->draw(ennemy[i].shape);
+		}
 
 		for (size_t i = 0; i < bullets.size(); i++)
 		{
@@ -300,6 +317,7 @@ int main()
 				}
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && buttons[i].text.getString() == "PLAY")
 				{
+					gameHasStarted = true;
 					while (buttons.size() > 0)
 					{
 						buttons.erase(buttons.begin());

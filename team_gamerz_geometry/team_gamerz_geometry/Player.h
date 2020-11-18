@@ -1,5 +1,5 @@
 #pragma once
-
+#include <SFML/Graphics.hpp>
 struct Player {
 
 	float speed;
