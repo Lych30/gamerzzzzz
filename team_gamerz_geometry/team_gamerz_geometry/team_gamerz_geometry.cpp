@@ -57,7 +57,7 @@ int main()
 	}
 	tir2.setVolume(40);
 
-	int comptScore = 50000;
+	int comptScore = 0;
 
 	//Setup de la Font
 	arcade.loadFromFile(getAssetsPath() + "\\arcade1.ttf");
@@ -298,6 +298,8 @@ int main()
 					if (ennemy[i].shape.getGlobalBounds().contains(bullets[j].bullet.getPosition()))
 					{
 						ennemy.erase(ennemy.begin() + i);
+						comptScore++;
+						score.setString(std::to_string(comptScore));
 					}
 				}
 			}
