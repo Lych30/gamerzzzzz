@@ -14,8 +14,8 @@ D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\Menu.h(14,
           [
               T=unsigned int
           ]
-D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(264,46): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(270,82): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(363,42): warning C4129: 'A' : caractère de séquence d'échappement non reconnu
-D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(368,42): warning C4129: 'S' : caractère de séquence d'échappement non reconnu
+D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(262,46): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(268,82): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(364,42): warning C4129: 'A' : caractère de séquence d'échappement non reconnu
+D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\team_gamerz_geometry\team_gamerz_geometry.cpp(369,42): warning C4129: 'S' : caractère de séquence d'échappement non reconnu
   team_gamerz_geometry.vcxproj -> D:\C++Projet\C++\gamerzzzzz\team_gamerz_geometry\Debug\team_gamerz_geometry.exe

@@ -35,5 +35,7 @@ Ennemy::Ennemy(Player* player, sf::RenderWindow* window, int offset) {
 
 	shape.setPosition(SetPos(window->getSize().x, window->getSize().y, offset));
 	playerPos = player->ShipShape.getPosition();
+	EnnemyDir = playerPos - shape.getPosition();
+	EnnemyDirNorm = EnnemyDir / sqrt(pow(EnnemyDir.x, 2) + pow(EnnemyDir.y, 2));
 	shape.setRadius(20.0f);
 }

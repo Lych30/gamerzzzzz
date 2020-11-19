@@ -9,6 +9,8 @@ public:
 	float speed = 0;
 	int type = 0;
 	int hp = 0;
+	sf::Vector2f EnnemyDir;
+	sf::Vector2f EnnemyDirNorm;
 	sf::Vector2f playerPos;
 	Ennemy(Player* player, sf::RenderWindow* window, int offset);
 };

@@ -188,13 +188,11 @@ int main()
 			b1.currentVelocity = aimDirNorm * (b1.maxSpeed +.5f);
 			bullets.push_back(Bullet(b1));
 
-			aimDir = (mousePosition - player->ShipShape.getPosition());
 			aimDirNorm = (aimDir / sqrt(pow(aimDir.x, 2) + pow(aimDir.y, 2))) - sf::Vector2f(0.2f, 0.2f);
 			b1.bullet.setPosition(player->ShipShape.getPosition());
 			b1.currentVelocity = aimDirNorm *(b1.maxSpeed +.5f);
 			bullets.push_back(Bullet(b1));
 
-			aimDir = mousePosition - player->ShipShape.getPosition();
 			aimDirNorm = aimDir / sqrt(pow(aimDir.x, 2) + pow(aimDir.y, 2));
 			b1.bullet.setPosition(player->ShipShape.getPosition());
 			b1.currentVelocity = aimDirNorm * (b1.maxSpeed +.5f);
@@ -291,13 +289,16 @@ int main()
 
 		for (size_t i = 0; i < ennemy.size(); i++)
 		{
+			ennemy[i].shape.move(ennemy[i].EnnemyDirNorm / 2.f);
 			window->draw(ennemy[i].shape);
 			for (size_t j = 0; j < bullets.size(); j++)
 			{
-				
-				if (ennemy[i].shape.getGlobalBounds().contains(bullets[j].bullet.getPosition()))
+				if (ennemy.size() > 0 && i < ennemy.size() && bullets.size()>0 && j < bullets.size())
 				{
-						ennemy.erase(ennemy.begin()+i);
+					if (ennemy[i].shape.getGlobalBounds().contains(bullets[j].bullet.getPosition()))
+					{
+						ennemy.erase(ennemy.begin() + i);
+					}
 				}
 			}
 		}
