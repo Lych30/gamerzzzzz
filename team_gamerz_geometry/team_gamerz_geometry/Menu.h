@@ -14,6 +14,8 @@ std::vector<Button>InitialiseButton(sf::RenderWindow* window, int xOffset, int y
 	button.ButtonShape.setPosition((window->getSize().x / 2) + xOffset, (window->getSize().y / 3) + yOffset);
 	button.text.setString(text);
 	button.text.setScale(2, 2);
+	button.text.setOutlineColor(sf::Color(213, 19, 19));
+	button.text.setOutlineThickness(1.0f);
 	//button.text.setOrigin(button.ButtonShape.getPosition());
 	button.text.setPosition(button.ButtonShape.getPosition().x, button.ButtonShape.getPosition().y);
 	buttons.push_back(Button(button));

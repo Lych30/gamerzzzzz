@@ -10,6 +10,7 @@ struct Player {
 	float DashTime = 0.05f;
 	float DashReloadTime = 2.f;
 	bool DashReady = false;
+	int hp = 3;
 
 };
 class Bullet {
@@ -18,7 +19,7 @@ public:
 	sf::Vector2f currentVelocity;
 	float maxSpeed;
 	
-		Bullet(float radius = 5.f) : currentVelocity(0.f,0.f),maxSpeed(0.75f)
+		Bullet(float radius = 5.f) : currentVelocity(0.f,0.f),maxSpeed(1.25f)
 	{
 			this->bullet.setRadius(radius);
 			this->bullet.setFillColor(sf::Color::Cyan);
