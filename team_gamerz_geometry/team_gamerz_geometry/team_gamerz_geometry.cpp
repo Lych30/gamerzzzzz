@@ -455,6 +455,23 @@ int main()
 		{
 			ennemy[i].shape.move(ennemy[i].EnnemyDirNorm* ennemy[i].speed*deltaTime);
 			window->draw(ennemy[i].shape);
+			//PLAYER LOOSE
+			if (ennemy[i].shape.getGlobalBounds().contains(player->ShipShape.getPosition())) {
+				std::cout << "player touché" << std::endl;
+				player->hp--;
+				if (player->hp <= 0) {
+					gameHasStarted = false;
+
+
+					while (ennemy.size() > 0)
+					{
+						ennemy.erase(ennemy.begin());
+					}
+					buttons = InitialiseButton(window, 0, 0, buttons, "PLAY");
+					buttons = InitialiseButton(window, 0, 300, buttons, "QUITTER");
+					break;
+				}
+			}
 			for (size_t j = 0; j < bullets.size(); j++)
 			{
 				//ENNEMY DESTROY
@@ -467,16 +484,6 @@ int main()
 						comptScore++;
 						score.setString(std::to_string(comptScore));
 						break;
-					}
-				}
-
-				//PLAYER LOOSE
-				if (ennemy[i].shape.getGlobalBounds().contains(player->ShipShape.getPosition())) {
-					std::cout<< "player touché" << std::endl;
-					player->hp--;
-					if (player->hp <= 0) {
-						gameHasStarted = false;
-						player->ShipShape.setFillColor(sf::Color(0, 0, 0, 0));
 					}
 				}
 			}
@@ -493,7 +500,7 @@ int main()
 		{
 			window->draw(stars[i].star);
 		}
-
+		//BOUTONS
 		for (size_t i = 0; i < buttons.size(); i++)
 		{
 			window->draw(buttons[i].ButtonShape);
