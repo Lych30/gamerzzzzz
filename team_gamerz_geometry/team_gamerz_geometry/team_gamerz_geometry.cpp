@@ -120,6 +120,8 @@ int main()
 	sf::Font arcade;
 	sf::Text textScore;
 	sf::Text score;
+	sf::Text textHighscore;
+	sf::Text Highscore;
 
 	bool gameHasStarted = false;
 
@@ -151,6 +153,7 @@ int main()
 	tir2.setVolume(40);
 
 	int comptScore = 0;
+	int Highscorecompt = 0;
 
 	//Setup de la Font
 	arcade.loadFromFile(getAssetsPath() + "\\arcade1.ttf");
@@ -168,6 +171,18 @@ int main()
 	score.setFillColor(sf::Color(239, 159, 58));
 	score.setString(std::to_string(comptScore));
 	score.setPosition(175, 5);
+
+	textHighscore.setFont(arcade);
+	textHighscore.setString("Highscore:");
+	textHighscore.setOutlineColor(sf::Color(213, 19, 19));
+	textHighscore.setOutlineThickness(1.0f);
+	textHighscore.setFillColor(sf::Color(255, 143, 0));
+	textHighscore.setPosition(900, 5);
+
+	Highscore.setFont(arcade);
+	Highscore.setFillColor(sf::Color(239, 159, 58));
+	Highscore.setString(std::to_string(Highscorecompt));
+	Highscore.setPosition(1200, 5);
 
 	bool IsLoaded = false;
 	bool isPlaying = false;
@@ -461,7 +476,11 @@ int main()
 				player->hp--;
 				if (player->hp <= 0) {
 					gameHasStarted = false;
-
+					if (comptScore >= Highscorecompt)
+					{
+						Highscorecompt = comptScore;
+						Highscore.setString(std::to_string(Highscorecompt));
+					}
 
 					while (ennemy.size() > 0)
 					{
@@ -545,6 +564,8 @@ int main()
 		window->draw(player->ShipShape);
 		window->draw(textScore);
 		window->draw(score);
+		window->draw(textHighscore);
+		window->draw(Highscore);
 		window->display();
 
 
